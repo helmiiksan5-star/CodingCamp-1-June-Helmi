@@ -1,2 +1,2 @@
-# CodingCamp-1-June-Helmi
+# CodingCamp-1June-Helmi
 mini project coding camp
