@@ -21,6 +21,71 @@ body {
   min-height: 100vh;
   padding: 2rem 1rem;
   line-height: 1.5;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Dark Mode */
+body.dark-mode {
+  background-color: #1a202c;
+  color: #e2e8f0;
+}
+
+body.dark-mode .widget {
+  background-color: #2d3748;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3), 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+body.dark-mode .widget h2,
+body.dark-mode .widget h3 {
+  color: #a0aec0;
+}
+
+body.dark-mode #greeting-text,
+body.dark-mode #time-display,
+body.dark-mode #timer-display,
+body.dark-mode .task-text {
+  color: #e2e8f0;
+}
+
+body.dark-mode #date-display {
+  color: #a0aec0;
+}
+
+body.dark-mode .task-item {
+  background-color: #1a202c;
+  border-color: #4a5568;
+}
+
+body.dark-mode .task-item:hover {
+  background-color: #374151;
+}
+
+body.dark-mode input[type="text"],
+body.dark-mode input[type="url"],
+body.dark-mode .task-edit-input,
+body.dark-mode .greeting-input {
+  background-color: #1a202c;
+  border-color: #4a5568;
+  color: #e2e8f0;
+}
+
+body.dark-mode input[type="text"]::placeholder,
+body.dark-mode input[type="url"]::placeholder,
+body.dark-mode .greeting-input::placeholder {
+  color: #718096;
+}
+
+body.dark-mode #timer-stop-btn,
+body.dark-mode #timer-reset-btn,
+body.dark-mode .task-cancel-btn {
+  background-color: #4a5568;
+  color: #e2e8f0;
+}
+
+body.dark-mode #timer-stop-btn:hover:not(:disabled),
+body.dark-mode #timer-reset-btn:hover:not(:disabled),
+body.dark-mode .task-cancel-btn:hover:not(:disabled) {
+  background-color: #718096;
 }
 
 input,
@@ -36,6 +101,37 @@ ul {
 /* ==========================================================================
    Layout — App Container (2×2 grid)
    ========================================================================== */
+
+/* Theme Toggle */
+.theme-toggle-container {
+  max-width: 900px;
+  margin: 0 auto 1rem auto;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.theme-toggle {
+  background-color: #4299e1;
+  color: #ffffff;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1.25rem;
+  transition: background-color 0.3s ease;
+}
+
+.theme-toggle:hover {
+  background-color: #3182ce;
+}
+
+body.dark-mode .theme-toggle {
+  background-color: #805ad5;
+}
+
+body.dark-mode .theme-toggle:hover {
+  background-color: #6b46c1;
+}
 
 .app-container {
   display: grid;
@@ -73,10 +169,47 @@ ul {
    Greeting Widget
    ========================================================================== */
 
+.greeting-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
 #greeting-text {
   font-size: 1.25rem;
   font-weight: 600;
   color: #4a5568;
+  flex: 1;
+}
+
+.edit-greeting-btn {
+  background: none;
+  border: none;
+  padding: 0.25rem;
+  cursor: pointer;
+  font-size: 1rem;
+  opacity: 0.6;
+  transition: opacity 0.2s ease;
+}
+
+.edit-greeting-btn:hover {
+  opacity: 1;
+}
+
+.greeting-input {
+  padding: 0.45rem 0.75rem;
+  border: 1px solid #4299e1;
+  border-radius: 6px;
+  font-size: 0.9375rem;
+  color: #2d3748;
+  background-color: #ffffff;
+  outline: none;
+  width: 100%;
+  margin-bottom: 0.5rem;
+}
+
+.greeting-input:focus {
+  box-shadow: 0 0 0 2px rgba(66, 153, 225, 0.25);
 }
 
 #time-display {

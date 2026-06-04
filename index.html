@@ -7,11 +7,20 @@
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+  <!-- Dark Mode Toggle -->
+  <div class="theme-toggle-container">
+    <button id="theme-toggle-btn" class="theme-toggle" aria-label="Toggle dark mode">🌙</button>
+  </div>
+
   <div class="app-container">
 
     <!-- Greeting Widget -->
     <section id="greeting-widget" class="widget">
-      <p id="greeting-text">Good Morning</p>
+      <div class="greeting-header">
+        <p id="greeting-text">Good Morning</p>
+        <button id="edit-greeting-btn" class="edit-greeting-btn" title="Edit greeting">✏️</button>
+      </div>
+      <input id="greeting-input" type="text" class="greeting-input hidden" placeholder="Enter custom greeting" maxlength="100">
       <p id="time-display">00:00</p>
       <p id="date-display">Monday, 1 January 2025</p>
     </section>
