@@ -1,0 +1,374 @@
+/* ==========================================================================
+   Reset & Base
+   ========================================================================== */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+}
+
+body {
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  background-color: #f0f4f8;
+  color: #2d3748;
+  min-height: 100vh;
+  padding: 2rem 1rem;
+  line-height: 1.5;
+}
+
+input,
+button {
+  font-family: inherit;
+  font-size: inherit;
+}
+
+ul {
+  list-style: none;
+}
+
+/* ==========================================================================
+   Layout — App Container (2×2 grid)
+   ========================================================================== */
+
+.app-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* ==========================================================================
+   Widget — Card Base
+   ========================================================================== */
+
+.widget {
+  background-color: #ffffff;
+  border-radius: 12px;
+  padding: 1.75rem 1.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08), 0 1px 3px rgba(0, 0, 0, 0.06);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* Widget headings (if any h2/h3 are added) */
+.widget h2,
+.widget h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #718096;
+}
+
+/* ==========================================================================
+   Greeting Widget
+   ========================================================================== */
+
+#greeting-text {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #4a5568;
+}
+
+#time-display {
+  font-size: 3rem;
+  font-weight: 700;
+  color: #2d3748;
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+
+#date-display {
+  font-size: 0.9rem;
+  color: #718096;
+}
+
+/* ==========================================================================
+   Focus Timer Widget
+   ========================================================================== */
+
+#timer-display {
+  font-size: 3.5rem;
+  font-weight: 700;
+  color: #2d3748;
+  letter-spacing: -0.02em;
+  text-align: center;
+  line-height: 1;
+}
+
+/* State: timer finished — applied by JS */
+.timer-complete {
+  color: #e53e3e !important;
+}
+
+.timer-controls {
+  display: flex;
+  flex-direction: row;
+  gap: 0.625rem;
+  justify-content: center;
+}
+
+/* ==========================================================================
+   Task Manager Widget
+   ========================================================================== */
+
+.task-input-row {
+  display: flex;
+  flex-direction: row;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+/* Task list */
+#task-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+}
+
+.task-item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.625rem;
+  border-radius: 6px;
+  background-color: #f7fafc;
+  border: 1px solid #e2e8f0;
+  transition: background-color 0.15s ease;
+}
+
+.task-item:hover {
+  background-color: #edf2f7;
+}
+
+/* State: task done — applied by JS */
+.task-complete .task-text {
+  text-decoration: line-through;
+  color: #a0aec0;
+}
+
+/* State: editing mode — applied by JS */
+.task-item.editing {
+  background-color: #ebf8ff;
+  border-color: #4299e1;
+}
+
+.task-checkbox {
+  cursor: pointer;
+  width: 1rem;
+  height: 1rem;
+  flex-shrink: 0;
+  accent-color: #4299e1;
+}
+
+.task-text {
+  flex: 1;
+  font-size: 0.9375rem;
+  color: #2d3748;
+  word-break: break-word;
+}
+
+.task-edit-input {
+  flex: 1;
+  padding: 0.3rem 0.5rem;
+  border: 1px solid #4299e1;
+  border-radius: 4px;
+  font-size: 0.9375rem;
+  color: #2d3748;
+  background-color: #ffffff;
+  outline: none;
+}
+
+.task-edit-input:focus {
+  box-shadow: 0 0 0 2px rgba(66, 153, 225, 0.3);
+}
+
+/* ==========================================================================
+   Quick Links Widget
+   ========================================================================== */
+
+.link-input-row {
+  display: flex;
+  flex-direction: row;
+  gap: 0.5rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+#links-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+}
+
+.link-item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.validation-msg {
+  font-size: 0.8125rem;
+  color: #e53e3e;
+  min-height: 1.2em;
+}
+
+/* ==========================================================================
+   Buttons — Shared Base
+   ========================================================================== */
+
+button {
+  cursor: pointer;
+  border: none;
+  border-radius: 6px;
+  font-weight: 500;
+  transition: background-color 0.15s ease, opacity 0.15s ease;
+  white-space: nowrap;
+}
+
+button:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+/* Primary buttons — Add, Start, Save, Open Link */
+#task-add-btn,
+#timer-start-btn,
+#link-add-btn,
+.task-save-btn,
+.link-open-btn {
+  background-color: #4299e1;
+  color: #ffffff;
+  padding: 0.45rem 1rem;
+}
+
+#task-add-btn:hover:not(:disabled),
+#timer-start-btn:hover:not(:disabled),
+#link-add-btn:hover:not(:disabled),
+.task-save-btn:hover:not(:disabled),
+.link-open-btn:hover:not(:disabled) {
+  background-color: #3182ce;
+}
+
+/* Secondary / neutral buttons — Stop, Reset, Cancel */
+#timer-stop-btn,
+#timer-reset-btn,
+.task-cancel-btn {
+  background-color: #edf2f7;
+  color: #4a5568;
+  padding: 0.45rem 1rem;
+}
+
+#timer-stop-btn:hover:not(:disabled),
+#timer-reset-btn:hover:not(:disabled),
+.task-cancel-btn:hover:not(:disabled) {
+  background-color: #e2e8f0;
+}
+
+/* Small action buttons on task items */
+.task-edit-btn {
+  background-color: #e9d8fd;
+  color: #553c9a;
+  padding: 0.3rem 0.625rem;
+  font-size: 0.8125rem;
+}
+
+.task-edit-btn:hover:not(:disabled) {
+  background-color: #d6bcfa;
+}
+
+/* Danger / delete buttons */
+.task-delete-btn,
+.link-delete-btn {
+  background-color: #fed7d7;
+  color: #c53030;
+  padding: 0.3rem 0.625rem;
+  font-size: 0.8125rem;
+}
+
+.task-delete-btn:hover:not(:disabled),
+.link-delete-btn:hover:not(:disabled) {
+  background-color: #feb2b2;
+}
+
+/* Link open button — slightly larger for usability */
+.link-open-btn {
+  flex: 1;
+  text-align: left;
+  padding: 0.45rem 0.875rem;
+  font-size: 0.9375rem;
+}
+
+/* ==========================================================================
+   Inputs — Shared Base
+   ========================================================================== */
+
+input[type="text"],
+input[type="url"] {
+  flex: 1;
+  padding: 0.45rem 0.75rem;
+  border: 1px solid #cbd5e0;
+  border-radius: 6px;
+  font-size: 0.9375rem;
+  color: #2d3748;
+  background-color: #ffffff;
+  outline: none;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+  min-width: 0; /* prevent flex overflow */
+}
+
+input[type="text"]:focus,
+input[type="url"]:focus {
+  border-color: #4299e1;
+  box-shadow: 0 0 0 2px rgba(66, 153, 225, 0.25);
+}
+
+input[type="text"]::placeholder,
+input[type="url"]::placeholder {
+  color: #a0aec0;
+}
+
+/* ==========================================================================
+   Utility State Classes
+   ========================================================================== */
+
+/* Applied by JS to hide any element */
+.hidden {
+  display: none;
+}
+
+/* ==========================================================================
+   Responsive — single column on small screens
+   ========================================================================== */
+
+@media (max-width: 600px) {
+  .app-container {
+    grid-template-columns: 1fr;
+  }
+
+  #time-display,
+  #timer-display {
+    font-size: 2.5rem;
+  }
+
+  .link-input-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .link-input-row input,
+  .link-input-row button {
+    width: 100%;
+  }
+}

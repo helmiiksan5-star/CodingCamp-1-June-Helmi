@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>To-Do List</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="app-container">
+
+    <!-- Greeting Widget -->
+    <section id="greeting-widget" class="widget">
+      <p id="greeting-text">Good Morning</p>
+      <p id="time-display">00:00</p>
+      <p id="date-display">Monday, 1 January 2025</p>
+    </section>
+
+    <!-- Focus Timer Widget -->
+    <section id="timer-widget" class="widget">
+      <p id="timer-display">25:00</p>
+      <div class="timer-controls">
+        <button id="timer-start-btn">Start</button>
+        <button id="timer-stop-btn" disabled>Stop</button>
+        <button id="timer-reset-btn">Reset</button>
+      </div>
+    </section>
+
+    <!-- Task Manager Widget -->
+    <section id="task-widget" class="widget">
+      <div class="task-input-row">
+        <input id="task-input" type="text" placeholder="Add a new task…" maxlength="500">
+        <button id="task-add-btn">Add</button>
+      </div>
+      <ul id="task-list"></ul>
+    </section>
+
+    <!-- Quick Links Widget -->
+    <section id="links-widget" class="widget">
+      <div class="link-input-row">
+        <input id="link-label-input" type="text" placeholder="Label" maxlength="50">
+        <input id="link-url-input"   type="url"  placeholder="https://…">
+        <button id="link-add-btn">Add Link</button>
+      </div>
+      <p id="link-validation-msg" class="validation-msg hidden"></p>
+      <div id="links-list"></div>
+    </section>
+
+  </div>
+  <script src="js/app.js" defer></script>
+</body>
+</html>
